@@ -26,8 +26,9 @@ func PopulateDb(db *sql.DB) error {
 		NAMEP   VARCHAR,
 		SURNAME VARCHAR,
 		SEX		VARCHAR,
-		ADDR		VARCHAR,
-		PHONE   VARCHAR
+		ADDR	VARCHAR,
+		PHONE   VARCHAR,
+		WEIGHT  NUMBER
 	);
 	`
     _, err := db.Exec(sql_table)
@@ -35,21 +36,21 @@ func PopulateDb(db *sql.DB) error {
         return err
     }
     
-    statement, err := db.Prepare("INSERT INTO USERS (DNI, NAMEP, SURNAME, SEX, ADDR, PHONE) VALUES (?, ?, ?, ?, ?, ?)")
-    statement.Exec("85910025F", "Felipe", "Murillo", "M", "ADDR1", "666666666")
-    statement.Exec("52145265L", "Virgilio", "Garcia", "M", "ADDR1", "666666666")
-    statement.Exec("32514521A", "Dani", "Escribano", "M", "ADDR1", "666666666")
-    statement.Exec("69852235X", "Andres", "Ruiz", "M", "ADDR1", "666666666")
-    statement.Exec("65256985A", "Carlos", "Montero", "M", "ADDR1", "666666666")
-    statement.Exec("32601125T", "Alejandro", "Galindo", "M", "ADDR1", "666666666")
+    statement, err := db.Prepare("INSERT INTO USERS (DNI, NAMEP, SURNAME, SEX, ADDR, PHONE, WEIGHT) VALUES (?, ?, ?, ?, ?, ?,?)")
+    statement.Exec("85910025F", "Felipe", "Murillo", "M", "ADDR1", "666666666", 88)
+    statement.Exec("52145265L", "Virgilio", "Garcia", "M", "ADDR1", "666666666", 1000)
+    statement.Exec("32514521A", "Dani", "Escribano", "M", "ADDR1", "666666666", 81)
+    statement.Exec("69852235X", "Andres", "Ruiz", "M", "ADDR1", "666666666", 70)
+    statement.Exec("65256985A", "Carlos", "Montero", "M", "ADDR1", "666666666", 80)
+    statement.Exec("32601125T", "Alejandro", "Galindo", "M", "ADDR1", "666666666", 85)
     
     return nil
 }
 
-func insertUser(db *sql.DB, pr *PersonRequest) (*PersonRequest, error) {
+func insertUser(db *sql.DB, pr *Person) (*Person, error) {
     
-    statement, err := db.Prepare("INSERT INTO USERS (DNI, NAMEP, SURNAME, SEX, ADDR, PHONE) VALUES (?, ?, ?, ?, ?, ?)")
-    result, err := statement.Exec(pr.Dni, pr.Name, pr.Surname, pr.Sex, pr.Addr, pr.Phone)
+    statement, err := db.Prepare("INSERT INTO USERS (DNI, NAMEP, SURNAME, SEX, ADDR, PHONE, WEIGHT) VALUES (?, ?, ?, ?, ?, ?, ?)")
+    result, err := statement.Exec(pr.Dni, pr.Name, pr.Surname, pr.Sex, pr.Addr, pr.Phone, pr.Weight)
     
     fmt.Println(result)
     
@@ -60,9 +61,9 @@ func insertUser(db *sql.DB, pr *PersonRequest) (*PersonRequest, error) {
     return pr, nil
 }
 
-func getUser(db *sql.DB, dni string) (*PersonRequest, error) {
+func getUser(db *sql.DB, dni string) (*Person, error) {
     
-    var person PersonRequest
+    var person Person
     
     rows, err := db.Query(`SELECT DNI, NAMEP, SURNAME, SEX, ADDR, PHONE FROM USERS where DNI = ?`, dni)
     
@@ -77,6 +78,7 @@ func getUser(db *sql.DB, dni string) (*PersonRequest, error) {
             &person.Sex,
             &person.Addr,
             &person.Phone,
+            &person.Weight,
         )
         if err != nil {
             return nil, err
@@ -86,9 +88,9 @@ func getUser(db *sql.DB, dni string) (*PersonRequest, error) {
     return &person, nil
 }
 
-func listUsers(db *sql.DB) ([]PersonRequest, error) {
+func listUsers(db *sql.DB) ([]Person, error) {
     
-    personList := make([]PersonRequest, 0)
+    personList := make([]Person, 0)
     
     rows, err := db.Query(`SELECT * FROM USERS`)
     
@@ -96,7 +98,7 @@ func listUsers(db *sql.DB) ([]PersonRequest, error) {
         return nil, err
     }
     
-    var person PersonRequest
+    var person Person
     
     for rows.Next() {
         _ = rows.Scan(&person.Dni,
@@ -105,6 +107,7 @@ func listUsers(db *sql.DB) ([]PersonRequest, error) {
             &person.Sex,
             &person.Addr,
             &person.Phone,
+            &person.Weight,
         )
         
         personList = append(personList, person)

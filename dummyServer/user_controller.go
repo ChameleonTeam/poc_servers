@@ -24,7 +24,9 @@ func ListUsers(rw http.ResponseWriter, r *http.Request) {
         return
     }
     
-    output, _ := json.Marshal(people)
+    result := PersonList{Persons: people}
+    
+    output, _ := json.Marshal(result)
     
     rw.Header().Set("Content-Type", "application/json")
     rw.WriteHeader(http.StatusOK)
@@ -62,9 +64,9 @@ func GetUser(rw http.ResponseWriter, r *http.Request) {
     return
 }
 
-func CreateUser(rw http.ResponseWriter,r *http.Request) {
+func CreateUser(rw http.ResponseWriter, r *http.Request) {
     
-    person := &PersonRequest{}
+    person := &Person{}
     
     b, _ := ioutil.ReadAll(r.Body)
     if err := json.Unmarshal(b, &person); err != nil {
@@ -86,10 +88,9 @@ func CreateUser(rw http.ResponseWriter,r *http.Request) {
     }
     
     output, _ := json.Marshal(per)
-
+    
     rw.Header().Set("Content-Type", "application/json")
     rw.WriteHeader(http.StatusOK)
     rw.Write(output)
     return
 }
-

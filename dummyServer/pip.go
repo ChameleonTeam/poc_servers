@@ -8,7 +8,7 @@ import (
 var (
     AdminActions = []string{"Admin"}
     ReaderActions = []string{"GetUser", "ListUser"}
-    WriteAndReadrActions = []string{"GetUser", "ListUsers", "InertUser"}
+    WriteAndReadrActions = []string{"GetUser", "ListUsers", "InsertUser", "UpdateUser", "DeleteUser"}
  
 )
 

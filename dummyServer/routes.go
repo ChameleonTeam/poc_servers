@@ -27,8 +27,10 @@ func CreateHandler() (*negroni.Negroni, error) {
 
 func addUserRoutes(r *mux.Router) {
     r.Methods("POST").Path("/user").HandlerFunc(CreateUser)
+    r.Methods("POST").Path("/user/{dni}").HandlerFunc(UpdateUser)
     r.Methods("GET").Path("/user/{dni}").HandlerFunc(GetUser)
     r.Methods("GET").Path("/user").HandlerFunc(ListUsers)
+    r.Methods("DELETE").Path("/user/{dni}").HandlerFunc(DeleteUser)
 }
 
 func addPipRoutes(r *mux.Router) {

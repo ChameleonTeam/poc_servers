@@ -4,9 +4,11 @@
 *.dll
 *.so
 *.dylib
-.idea
+/.idea/*
 # Test binary, build with `go test -c`
 *.test
+# Node modules
+/dummyFront/node_modules/
 
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out

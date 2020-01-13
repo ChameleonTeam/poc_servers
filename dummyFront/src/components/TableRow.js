@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import UserProfile from './user.component';
 
 class TableRow extends Component {
 
@@ -39,11 +40,17 @@ class TableRow extends Component {
           <td>
             {this.props.obj.weight}
           </td>
-          <td>
+          <td hidden={!UserProfile.includeAction("UpdateUser")}>
             <Link to={"/edit/"+this.props.obj.dni} className="btn btn-primary">Edit</Link>
           </td>
-          <td>
+          <td hidden={!!UserProfile.includeAction("UpdateUser")}>
+            <button className="btn btn-primary" disabled>Edit</button>
+          </td>
+          <td hidden={!UserProfile.includeAction("DeleteUser")}>
             <button onClick={this.delete} className="btn btn-danger">Delete</button>
+          </td>
+          <td hidden={!!UserProfile.includeAction("DeleteUser")}>
+            <button className="btn btn-danger" disabled>Delete</button>
           </td>
         </tr>
     );

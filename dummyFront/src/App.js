@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Create from './components/create.component';
 import Edit from './components/edit.component';
 import Index from './components/index.component';
+import Login from './components/login.component';
 
 class App extends Component {
   render() {
@@ -12,11 +13,11 @@ class App extends Component {
       <Router>
         <div className="container">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link to={'/'} className="navbar-brand">Business Inc.</Link>
+            <Link to={'/index'} className="navbar-brand">Business Inc.</Link>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav mr-auto">
               <li className="nav-item">
-                  <Link to={'/'} className="nav-link">Home</Link>
+                  <Link to={'/login'} className="nav-link">Login</Link>
                 </li>
                 <li className="nav-item">
                   <Link to={'/create'} className="nav-link">Create</Link>
@@ -28,6 +29,7 @@ class App extends Component {
             </div>
           </nav> <br/>
           <Switch>
+              <Route exact path='/login' component={ Login } />
               <Route exact path='/create' component={ Create } />
               <Route path='/edit/:id' component={ Edit } />
               <Route path='/index' component={ Index } />

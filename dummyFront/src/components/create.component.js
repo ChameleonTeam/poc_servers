@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import UserProfile from './user.component';
 
 const endpoint = 'http://localhost:4000/user'
 
@@ -153,8 +154,11 @@ export default class Create extends Component {
                         onChange={this.onChangeWeight}
                         />
                   </div>
-                  <div className="form-group">
+                  <div className="form-group" hidden={!UserProfile.includeAction("InsertUser")}>
                       <input type="submit" value="Register Employee" className="btn btn-primary"/>
+                  </div>
+                  <div className="form-group" hidden={!!UserProfile.includeAction("InsertUser")}>
+                      <input type="submit" value="Register Employee" className="btn btn-primary" disabled/>
                   </div>
               </form>
           </div>

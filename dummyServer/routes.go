@@ -34,5 +34,5 @@ func addUserRoutes(r *mux.Router) {
 }
 
 func addPipRoutes(r *mux.Router) {
-    r.Methods("GET").Path("/permissions").HandlerFunc(GetActions)
+    r.Methods("POST").Path("/permissions").HandlerFunc(GetActions)
 }

@@ -28,7 +28,7 @@ export default class Index extends Component {
     render() {
       return (
         <div>
-          <h3 align="center">Business List</h3>
+          <h3 align="center"><b>Business employee list</b></h3>
           <table className="table table-striped" style={{ marginTop: 20 }}>
             <thead>
               <tr>

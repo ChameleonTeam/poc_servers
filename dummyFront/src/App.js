@@ -13,7 +13,7 @@ class App extends Component {
       <Router>
         <div className="container">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link to={'/index'} className="navbar-brand">Business Inc.</Link>
+            <Link to={'/index'} className="navbar-brand"><b>Business Inc.</b></Link>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav mr-auto">
               <li className="nav-item">

@@ -102,7 +102,7 @@ export default class Edit extends Component {
   render() {
     return (
         <div style={{ marginTop: 10 }}>
-            <h3 align="center">Update Employee</h3>
+            <h3 align="center"><b>Update employee information</b></h3>
             <form onSubmit={this.onSubmit}>
                   <div className="form-group">
                       <label>Name:  </label>

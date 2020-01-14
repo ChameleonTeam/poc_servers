@@ -20,7 +20,7 @@ export default class Create extends Component {
           dni: '',
           name: '',
           surname: '',
-          gender: '',
+          gender: 'Male',
           addr: '',
           phone:'',
           weight: 80
@@ -69,7 +69,7 @@ export default class Create extends Component {
       surname: this.state.surname,
       dni: this.state.dni,
       gender: this.state.gender,
-      addr: this.state.gender,
+      addr: this.state.addr,
       phone: this.state.phone,
       weight: this.state.weight
     };
@@ -83,7 +83,7 @@ export default class Create extends Component {
       dni: '',
       name: '',
       surname: '',
-      gender: '',
+      gender: 'Male',
       addr: '',
       phone:'',
       weight: 0

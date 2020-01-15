@@ -1,32 +1,32 @@
 var UserProfile = (function() {
   
     var getName = function() {
-      return localStorage.getItem("user");
+      return sessionStorage.getItem("user");
     };
   
     var setName = function(name) {
-      localStorage.setItem("name", name);     
+      sessionStorage.setItem("name", name);     
     };
 
     var getActions = function() {
-      return localStorage.getItem("actions");
+      return sessionStorage.getItem("actions");
     };
     
     var setActions = function(actions) {
-      localStorage.setItem("actions", actions);      
+      sessionStorage.setItem("actions", actions);      
     };
 
     var includeAction = function(action) {
-      return localStorage.getItem("actions").includes(action);
+      return sessionStorage.getItem("actions").includes(action);
     };
 
     var setLogged = function(log) {
-      localStorage.removeItem("isLogged");
-      localStorage.setItem("isLogged", log);
+      sessionStorage.removeItem("isLogged");
+      sessionStorage.setItem("isLogged", log);
     }
 
     var isLogged = function() {
-        return localStorage.getItem("isLogged");
+        return sessionStorage.getItem("isLogged");
     };
   
     return {

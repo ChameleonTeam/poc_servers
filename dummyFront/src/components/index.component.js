@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import TableRow from './TableRow';
 
-const endpoint = 'http://localhost:4000/user'
+const endpoint = 'http://localhost:8080/user'
 
 export default class Index extends Component {
 

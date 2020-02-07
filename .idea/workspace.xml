@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d87e1514-d52a-44f2-a052-5ffae425de1b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/dummyFront/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dummyServer/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dummyFront/src/components/index.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/dummyFront/src/components/index.component.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dummyServer/USERS.db" beforeDir="false" afterPath="$PROJECT_DIR$/dummyServer/USERS.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dummyServer/dummyServer" beforeDir="false" afterPath="$PROJECT_DIR$/dummyServer/dummyServer" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dummyServer/userCommons.go" beforeDir="false" afterPath="$PROJECT_DIR$/dummyServer/userCommons.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dummyServer/user_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/dummyServer/user_controller.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dummyServer/user_domain.go" beforeDir="false" afterPath="$PROJECT_DIR$/dummyServer/user_domain.go" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,6 +37,11 @@
     <option name="indexEntireGoPath" value="false" />
   </component>
   <component name="ProjectId" id="1U6jAL3qjtuKRvz4ESsbp2bFMK9" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
@@ -51,18 +57,6 @@
       <recent name="$PROJECT_DIR$/dummyServer" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
@@ -71,7 +65,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -79,5 +75,11 @@
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="3659" y="658" width="424" height="491" key="FileChooserDialogImpl" timestamp="1580990529911">
+      <screen x="2916" y="360" width="1920" height="1080" />
+    </state>
+    <state x="3659" y="658" width="424" height="491" key="FileChooserDialogImpl/996.1080.1920.1080/0.0.1920.1080/2916.360.1920.1080@2916.360.1920.1080" timestamp="1580990529911" />
   </component>
 </project>

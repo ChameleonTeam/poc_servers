@@ -112,7 +112,6 @@ func getUser(db *sql.DB, dni string) (*Person, error) {
 func listUsers(db *sql.DB) ([]Person, error) {
     
     personList := make([]Person, 0)
-    
     rows, err := db.Query(`SELECT * FROM USERS`)
     
     if err != nil {

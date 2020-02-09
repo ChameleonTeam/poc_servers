@@ -3,6 +3,7 @@ package main
 import (
     "encoding/json"
     "io/ioutil"
+    "log"
     "net/http"
 
     "github.com/gorilla/mux"
@@ -11,6 +12,9 @@ import (
 func ListUsers(rw http.ResponseWriter, r *http.Request) {
     
     db, err := Connect()
+    log.Print("peticion");
+    log.Print(r.Host);
+    log.Print(r.Method);
     
     if err != nil {
         http.Error(rw, err.Error(), http.StatusInternalServerError)

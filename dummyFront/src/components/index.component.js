@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import TableRow from './TableRow';
+import UserProfile from './user.component';
 
 const endpoint = 'http://localhost:8080/user'
 
@@ -11,7 +12,7 @@ export default class Index extends Component {
       this.state = {persons: []};
     }
     componentDidMount(){
-      axios.get(endpoint)
+      axios.get(endpoint, {headers: {"permissions": sessionStorage.getItem('actions')}})
         .then(response => {
           this.setState({ persons: response.data.persons });
         })

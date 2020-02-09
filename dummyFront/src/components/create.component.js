@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import UserProfile from './user.component';
 
-const endpoint = 'http://localhost:4000/user'
+const endpoint = 'http://ec2-34-245-161-251.eu-west-1.compute.amazonaws.com:4000/user'
 
 export default class Create extends Component {
   constructor(props) {
@@ -34,7 +34,7 @@ export default class Create extends Component {
   onChangeSurname(e) {
     this.setState({
       surname: e.target.value
-    })  
+    })
   }
   onChangeDNI(e) {
     this.setState({
@@ -78,7 +78,7 @@ export default class Create extends Component {
         .catch(function (error) {
           console.log(error);
         });
-    
+
     this.setState({
       dni: '',
       name: '',
@@ -91,7 +91,7 @@ export default class Create extends Component {
     console.log(`The values are ${this.state.name}, ${this.state.surname}, ${this.state.dni}, ${this.state.gender},
     ${this.state.addr}, ${this.state.phone}, ${this.state.weight}`)
   }
- 
+
   render() {
       return (
           <div style={{ marginTop: 10 }}>
@@ -99,15 +99,15 @@ export default class Create extends Component {
               <form onSubmit={this.onSubmit}>
                   <div className="form-group">
                       <label>Name:  </label>
-                      <input type="text" 
-                        className="form-control" 
+                      <input type="text"
+                        className="form-control"
                         value={this.state.name}
                         onChange={this.onChangeName}
                         />
                   </div>
                   <div className="form-group">
                       <label>Surname: </label>
-                      <input type="text" 
+                      <input type="text"
                         className="form-control"
                         value={this.state.surname}
                         onChange={this.onChangeSurname}
@@ -115,7 +115,7 @@ export default class Create extends Component {
                   </div>
                   <div className="form-group">
                       <label>DNI: </label>
-                      <input type="text" 
+                      <input type="text"
                         className="form-control"
                         value={this.state.dni}
                         onChange={this.onChangeDNI}
@@ -128,19 +128,19 @@ export default class Create extends Component {
                         <option value="Female">Female</option>
                       </select>
                   </div>
-                  
+
                   <div className="form-group">
                       <label>Address: </label>
-                      <input type="text" 
+                      <input type="text"
                         className="form-control"
                         value={this.state.addr}
                         onChange={this.onChangeAddr}
                         />
                   </div>
-                
+
                   <div className="form-group">
                       <label>Phone: </label>
-                      <input type="text" 
+                      <input type="text"
                         className="form-control"
                         value={this.state.phone}
                         onChange={this.onChangePhone}
@@ -148,7 +148,7 @@ export default class Create extends Component {
                   </div>
                   <div className="form-group">
                       <label>Weight: </label>
-                      <input type="number" 
+                      <input type="number"
                         className="form-control"
                         value={this.state.weight}
                         onChange={this.onChangeWeight}

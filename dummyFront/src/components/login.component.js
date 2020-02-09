@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import UserProfile from './user.component';
 
-const endpoint = 'http://localhost:4000/permissions'
+const endpoint = 'http://ec2-34-245-161-251.eu-west-1.compute.amazonaws.com:4000/permissions'
 
 export default class Login extends Component {
   constructor(props) {
@@ -25,7 +25,7 @@ export default class Login extends Component {
   onChangePass(e) {
     this.setState({
       pass: e.target.value
-    })  
+    })
   }
 
   onSubmit(e) {
@@ -50,7 +50,7 @@ export default class Login extends Component {
         .catch(function (error) {
           console.log(error);
         });
-  
+
     console.log(`The values are ${this.state.user}, ${this.state.pass}`)
   }
 
@@ -65,7 +65,7 @@ export default class Login extends Component {
   isLogged() {
     return UserProfile.isLogged()
   }
- 
+
   render() {
     console.log("Esta logeado:", this.isLogged());
       return (
@@ -75,15 +75,15 @@ export default class Login extends Component {
               <form onSubmit={this.onSubmit}>
                   <div className="form-group">
                       <label>User:  </label>
-                      <input type="text" 
-                        className="form-control" 
+                      <input type="text"
+                        className="form-control"
                         value={this.state.user}
                         onChange={this.onChangeUser}
                         />
                   </div>
                   <div className="form-group">
                       <label>Pass: </label>
-                      <input type="password" 
+                      <input type="password"
                         className="form-control"
                         value={this.state.pass}
                         onChange={this.onChangePass}

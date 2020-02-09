@@ -3,7 +3,7 @@ import axios from 'axios';
 import TableRow from './TableRow';
 import UserProfile from './user.component';
 
-const endpoint = 'http://localhost:8080/user'
+const endpoint = 'http://ec2-18-203-82-83.eu-west-1.compute.amazonaws.com:8080/user'
 
 export default class Index extends Component {
 

@@ -8,9 +8,26 @@ on:
     paths:
       - 'dummyServer/**'
 
+env:
+  AWS_S3_BUCKET: ${{ secrets.AWS_BUCKET }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_DEFAULT_OUTPUT: json
+  AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+  AWS_DEFAULT_REGION: 'eu-west-1'
+
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-16.04
+    name: Release build and push
     steps:
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Make checkout repository
+        uses: actions/checkout@v2
+      - name: Set up Version
+        run: echo ::set-env name=NAME::$(echo ango_demo_backend:$(cat dummyServer/.version))
+      - name: Setup ECR
+        run: $( aws ecr get-login --no-include-email )
+      - name: Build Docker image
+        run: docker build dummyServer/. -t $NAME -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$NAME
+      - name: Push image
+        run: docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$NAME

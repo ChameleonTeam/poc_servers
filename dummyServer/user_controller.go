@@ -3,6 +3,7 @@ package main
 import (
     "encoding/json"
     "io/ioutil"
+    "log"
     "net/http"
 
     "github.com/gorilla/mux"
@@ -11,6 +12,9 @@ import (
 func ListUsers(rw http.ResponseWriter, r *http.Request) {
     
     db, err := Connect()
+    log.Print("peticion");
+    log.Print(r.Host);
+    log.Print(r.Method);
     
     if err != nil {
         http.Error(rw, err.Error(), http.StatusInternalServerError)
@@ -27,7 +31,7 @@ func ListUsers(rw http.ResponseWriter, r *http.Request) {
     result := PersonList{Persons: people}
     
     output, _ := json.Marshal(result)
-    
+    rw.Header().Set("Access-Control-Allow-Origin", "*")
     rw.Header().Set("Content-Type", "application/json")
     rw.WriteHeader(http.StatusOK)
     rw.Write(output)
@@ -58,6 +62,7 @@ func GetUser(rw http.ResponseWriter, r *http.Request) {
         http.Error(rw, err.Error(), http.StatusInternalServerError)
     }
     
+    rw.Header().Set("Access-Control-Allow-Origin", "*")
     rw.Header().Set("Content-Type", "application/json")
     rw.WriteHeader(http.StatusOK)
     rw.Write(output)
@@ -92,7 +97,8 @@ func CreateUser(rw http.ResponseWriter, r *http.Request) {
         http.Error(rw, err.Error(), http.StatusInternalServerError)
         return
     }
-
+    
+    rw.Header().Set("Access-Control-Allow-Origin", "*")
     rw.Header().Set("Content-Type", "application/json")
     rw.WriteHeader(http.StatusCreated)
     rw.Write(output)
@@ -127,7 +133,8 @@ func UpdateUser(rw http.ResponseWriter, r *http.Request) {
     }
 
     output, _ := json.Marshal(per)
-
+    
+    rw.Header().Set("Access-Control-Allow-Origin", "*")
     rw.Header().Set("Content-Type", "application/json")
     rw.WriteHeader(http.StatusOK)
     rw.Write(output)
@@ -157,7 +164,8 @@ func DeleteUser(rw http.ResponseWriter, r *http.Request){
     if err != nil {
         http.Error(rw, err.Error(), http.StatusInternalServerError)
     }
-
+    
+    rw.Header().Set("Access-Control-Allow-Origin", "*")
     rw.Header().Set("Content-Type", "application/json")
     rw.WriteHeader(http.StatusOK)
     rw.Write(output)

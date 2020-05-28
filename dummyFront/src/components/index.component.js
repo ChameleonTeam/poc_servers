@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import TableRow from './TableRow';
+import UserProfile from './user.component';
 
-const endpoint = 'http://localhost:4000/user'
+const endpoint = 'http://ec2-18-203-82-83.eu-west-1.compute.amazonaws.com:8080/user'
 
 export default class Index extends Component {
 
@@ -11,7 +12,7 @@ export default class Index extends Component {
       this.state = {persons: []};
     }
     componentDidMount(){
-      axios.get(endpoint)
+      axios.get(endpoint, {headers: {"permissions": sessionStorage.getItem('actions')}})
         .then(response => {
           this.setState({ persons: response.data.persons });
         })
@@ -28,7 +29,7 @@ export default class Index extends Component {
     render() {
       return (
         <div>
-          <h3 align="center">Business List</h3>
+          <h3 align="center"><b>Business employee list</b></h3>
           <table className="table table-striped" style={{ marginTop: 20 }}>
             <thead>
               <tr>

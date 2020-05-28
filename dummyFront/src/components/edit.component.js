@@ -25,10 +25,10 @@ export default class Edit extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:4000/user/'+this.props.match.params.id)
+    axios.get('http://ec2-34-245-161-251.eu-west-1.compute.amazonaws.com:4000/user/'+this.props.match.params.id)
       .then(response => {
-        this.setState({ 
-          name: response.data.name, 
+        this.setState({
+          name: response.data.name,
           surname: response.data.surname,
           dni: response.data.dni,
           gender: response.data.gender,
@@ -50,7 +50,7 @@ export default class Edit extends Component {
   onChangeSurname(e) {
     this.setState({
       surname: e.target.value
-    })  
+    })
   }
   onChangeDNI(e) {
     this.setState({
@@ -90,31 +90,31 @@ export default class Edit extends Component {
       weight: this.state.weight
     };
     console.log(obj);
-    axios.post('http://localhost:4000/user/'+ this.props.match.params.id, obj)
-        .then(res => 
+    axios.post('http://ec2-34-245-161-251.eu-west-1.compute.amazonaws.com:4000/user/'+ this.props.match.params.id, obj)
+        .then(res =>
           console.log(res.data),
         );
-    
+
     this.props.history.push('/index');
     window.location.reload()
   }
- 
+
   render() {
     return (
         <div style={{ marginTop: 10 }}>
-            <h3 align="center">Update Employee</h3>
+            <h3 align="center"><b>Update employee information</b></h3>
             <form onSubmit={this.onSubmit}>
                   <div className="form-group">
                       <label>Name:  </label>
-                      <input type="text" 
-                        className="form-control" 
+                      <input type="text"
+                        className="form-control"
                         value={this.state.name}
                         onChange={this.onChangeName}
                         />
                   </div>
                   <div className="form-group">
                       <label>Surname: </label>
-                      <input type="text" 
+                      <input type="text"
                         className="form-control"
                         value={this.state.surname}
                         onChange={this.onChangeSurname}
@@ -122,7 +122,7 @@ export default class Edit extends Component {
                   </div>
                   <div className="form-group">
                       <label>DNI: </label>
-                      <input type="text" 
+                      <input type="text"
                         className="form-control"
                         value={this.state.dni}
                         onChange={this.onChangeDNI}
@@ -138,7 +138,7 @@ export default class Edit extends Component {
                   </div>
                   <div className="form-group">
                       <label>Address: </label>
-                      <input type="text" 
+                      <input type="text"
                         className="form-control"
                         value={this.state.addr}
                         onChange={this.onChangeAddr}
@@ -146,7 +146,7 @@ export default class Edit extends Component {
                   </div>
                   <div className="form-group">
                       <label>Phone: </label>
-                      <input type="text" 
+                      <input type="text"
                         className="form-control"
                         value={this.state.phone}
                         onChange={this.onChangePhone}
@@ -154,15 +154,15 @@ export default class Edit extends Component {
                   </div>
                   <div className="form-group">
                       <label>Weight: </label>
-                      <input type="number" 
+                      <input type="number"
                         className="form-control"
                         value={this.state.weight}
                         onChange={this.onChangeWeight}
                         />
                   </div>
                 <div className="form-group">
-                    <input type="submit" 
-                      value="Update Employee" 
+                    <input type="submit"
+                      value="Update Employee"
                       className="btn btn-primary"/>
                 </div>
             </form>

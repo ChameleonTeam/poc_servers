@@ -25,7 +25,7 @@ export default class Edit extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://ec2-34-245-161-251.eu-west-1.compute.amazonaws.com:4000/user/'+this.props.match.params.id)
+    axios.get('http://localhost:4000/user/'+this.props.match.params.id)
       .then(response => {
         this.setState({
           name: response.data.name,
@@ -90,7 +90,7 @@ export default class Edit extends Component {
       weight: this.state.weight
     };
     console.log(obj);
-    axios.post('http://ec2-34-245-161-251.eu-west-1.compute.amazonaws.com:4000/user/'+ this.props.match.params.id, obj)
+    axios.post('http://localhost:4000/user/'+ this.props.match.params.id, obj)
         .then(res =>
           console.log(res.data),
         );

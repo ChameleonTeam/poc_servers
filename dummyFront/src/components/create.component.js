@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import UserProfile from './user.component';
 
-const endpoint = 'http://ec2-34-245-161-251.eu-west-1.compute.amazonaws.com:4000/user'
+const endpoint = 'http://localhost:4000/user'
 
 export default class Create extends Component {
   constructor(props) {

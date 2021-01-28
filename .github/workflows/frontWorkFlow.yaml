@@ -22,11 +22,9 @@ jobs:
     steps:
       - name: Make checkout repository
         uses: actions/checkout@v2
-      - name: Set up Version
-        run: echo ::set-env name=NAME::$(echo ango_demo_frontend:$(cat dummyFront/.version))
       - name: Setup ECR
         run: $( aws ecr get-login --no-include-email )
       - name: Build Docker image
-        run: docker build dummyFront/. -t $NAME -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$NAME
+        run: docker build dummyFront/. -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$(echo ango_demo_frontend:$(cat dummyFront/.version))
       - name: Push image
-        run: docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$NAME
+        run: docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$(echo ango_demo_frontend:$(cat dummyFront/.version))

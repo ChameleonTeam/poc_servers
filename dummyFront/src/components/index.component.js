@@ -11,8 +11,8 @@ export default class Index extends Component {
       super(props);
       this.state = {persons: []};
     }
-    componentDidMount(){
-      axios.get(endpoint, {headers: {"permissions": sessionStorage.getItem('actions')}})
+    async componentDidMount(){
+      await axios.get(endpoint, {headers: {"permissions": sessionStorage.getItem('actions')}})
         .then(response => {
           this.setState({ persons: response.data.persons });
         })
